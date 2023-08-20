@@ -6,6 +6,18 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
+  },
+  {
+    path: 'scaner-qr',
+    loadChildren: () => import('./scaner-qr/scaner-qr.module').then( m => m.ScanerQrPageModule)
+  },
+  {
+    path: 'lista-asignatura',
+    loadChildren: () => import('./lista-asignatura/lista-asignatura.module').then( m => m.ListaAsignaturaPageModule)
+  },
+  {
+    path: 'generar-qr',
+    loadChildren: () => import('./generar-qr/generar-qr.module').then( m => m.GenerarQrPageModule)
   }
 ];
 
