@@ -7,7 +7,19 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">listaAsignatura</ion-title>
+      <ion-title size="large">Lista de Asignaturas</ion-title>
     </ion-toolbar>
   </ion-header>
+
+
+<ion-list *ngFor="let asig of asignaturas">
+  <ion-button (click)="verAsignatura(asig.id)" expand="block" fill="clear" shape="round">
+  <h1 slot="start">{{asig.name}}</h1>
+  <p slot="end"> {{asig.section}} </p>
+</ion-button>
+</ion-list>
+
+
+
+
 </ion-content>
