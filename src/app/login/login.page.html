@@ -1,13 +1,21 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">login</ion-title>
+        <ion-title>Bienvenido A La App</ion-title>
     </ion-toolbar>
-  </ion-header>
+</ion-header>
+<ion-content class="ion-justify-content-center">
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Iniciar Sesion</ion-card-title>
+        </ion-card-header>
+        <ion-item lines="full">
+            <ion-label position="stacked">Nombre De Usuario</ion-label>
+            <ion-input type="text" placeholder="Usuario123" minlenght="8" maxlenght="15"></ion-input>
+        </ion-item>
+        <ion-item lines="full">
+            <ion-label position="stacked">Contrseña</ion-label>
+            <ion-input type="password" placeholder="********" minlenght="8" maxlenght="15"></ion-input>
+        </ion-item>
+        <ion-button expand="full">Ingresar</ion-button>
+    </ion-card>
 </ion-content>
