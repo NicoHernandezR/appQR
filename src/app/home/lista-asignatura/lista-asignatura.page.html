@@ -12,13 +12,14 @@
   </ion-header>
 
 
-<ion-list *ngFor="let asig of asignaturas">
-  <ion-button (click)="verAsignatura(asig.id)" expand="block" fill="clear" shape="round">
-  <h1 slot="start">{{asig.name}}</h1>
-  <p slot="end"> {{asig.section}} </p>
+<ion-list *ngFor="let asig of listaAsignatura" style="height: auto;">
+  <ion-button (click)="verAsignatura(asig.id_asignatura)" expand="block" fill="clear" shape="round">
+    <ion-title>{{asig.nombre}}  {{asig.seccion}} </ion-title>
+    <ion-text >
+      {{asig.p_nombre}}  {{asig.ap_paterno}} 
+    </ion-text>
 </ion-button>
 </ion-list>
-
 
 
 

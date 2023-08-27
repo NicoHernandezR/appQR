@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { asig_list } from './asignatura'
 import { Router, NavigationExtras } from '@angular/router';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-lista-asignatura',
@@ -16,10 +17,17 @@ export class ListaAsignaturaPage implements OnInit {
     new asig_list(3,'Portafolio','006D'),
   ]
 
+  listaAsignaturaJSON : any
+  listaAsignatura : any
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private apiService : ApiService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.listaAsignaturaJSON = await this.apiService.obtenerListaAsignatura()
+    console.log(this.listaAsignaturaJSON)
+    this.listaAsignatura = this.listaAsignaturaJSON.items
+    console.log(this.listaAsignatura)
+
   }
 
   verAsignatura(id:Number) {
