@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { asignatura } from './asignatura_detail';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-info-asignatura',
@@ -10,7 +11,8 @@ import { asignatura } from './asignatura_detail';
 })
 export class InfoAsignaturaPage implements OnInit {
 
-  data: any
+  id_asig: number = 0;
+  detalles_asig: any
 
   asignaturas = [
     new asignatura(0,'Progra','003D'),
@@ -19,24 +21,26 @@ export class InfoAsignaturaPage implements OnInit {
     new asignatura(3,'Portafolio','006D'),
   ]
 
-  asig: any
 
 
 
-  constructor(private actRoute: ActivatedRoute, private router: Router) {
-    this.actRoute.queryParams.subscribe(params => {
-      if (this.router.getCurrentNavigation()?.extras.state) {
-        this.data = this.router.getCurrentNavigation()?.extras?.state?.['id'];
-        //3
-        this.asig = this.asignaturas[this.data]
-      }
-    })
 
+  constructor(private actRoute: ActivatedRoute, private router: Router, 
+      private apiService : ApiService) {
    }
 
 
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.actRoute.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation()?.extras.state) {
+        this.id_asig = this.router.getCurrentNavigation()?.extras?.state?.['id'];
+      }
+    })
+    this.detalles_asig = await this.apiService.detalleAsistencia(this.id_asig)
+    console.log(this.detalles_asig)
+    this.detalles_asig = this.detalles_asig.items
+
   }
 
 }

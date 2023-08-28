@@ -3,6 +3,7 @@ import { asig_list } from './asignatura'
 import { Router, NavigationExtras } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 
+
 @Component({
   selector: 'app-lista-asignatura',
   templateUrl: './lista-asignatura.page.html',
@@ -30,10 +31,12 @@ export class ListaAsignaturaPage implements OnInit {
 
   }
 
-  verAsignatura(id:Number) {
+  verAsignatura(id:number) {
+   
     let nav: NavigationExtras = {
       state: { id : id}  
     }
+    console.log(typeof(id))
 
     this.router.navigate(['/home/lista-asignatura/info-asignatura'],nav)
   }
