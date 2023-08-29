@@ -1,7 +1,22 @@
-<ion-header [translucent]="true" *ngIf = 'datosCargados === true'>
+<ion-header>
   <ion-toolbar>
-    <ion-title> {{asignatura.nombre}} {{asignatura.seccion}} </ion-title>
-    <ion-title> Clases registradas: {{asignatura.clases_hechas}} </ion-title>
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-buttons slot="end">
+      <ion-icon size="large" class="ion-margin-end" name="person-circle-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header *ngIf="datosCargados === true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Volver"></ion-back-button>
+    </ion-buttons >
+    <ion-title size="small" class="centered-title">
+      {{asignatura.nombre}} {{asignatura.seccion}}
+      <br>
+      Clases registradas: {{asignatura.clases_hechas}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 

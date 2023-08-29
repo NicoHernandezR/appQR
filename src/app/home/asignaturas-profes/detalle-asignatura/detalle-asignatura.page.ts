@@ -29,8 +29,9 @@ export class DetalleAsignaturaPage implements OnInit {
       }
     })
     this.alumnos_detalle = await this.apiService.detalleAsignaturaProfe(this.id_asig)
-    this.asignatura = await this.apiService.asignatura(this.id_asig)
     this.alumnos_detalle = this.alumnos_detalle.items
+    this.asignatura = await this.apiService.asignatura(this.id_asig)
+
     this.asignatura = this.asignatura.items[0]
     console.log(this.alumnos_detalle)
     this.actualizarHashtable()
