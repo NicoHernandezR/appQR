@@ -7,7 +7,7 @@ import { UsuarioService } from './usuario.service';
 export class ApiService {
   private apiUrl = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/cantante/cantante'; // Reemplaza con la URL real de tu API
   private apiListaAsignatura = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/alumno/listaAsignaturas/'
-  private apiDetalleAsignatura = '';
+  private apiDetalleAsignatura = 'aaaaaaaaaaaa';
   private apiAsistencia = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asistencia/asistencia/'
   private apiAsitenciaAlumno = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asignatura/asignaturaAlumno/'
 
