@@ -1,21 +1,22 @@
-<ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-title>Bienvenido A La App</ion-title>
-    </ion-toolbar>
+<ion-header [translucent]="true" id="color1">
+    <ion-title>Bienvenido A La App</ion-title>
 </ion-header>
-<ion-content class="ion-justify-content-center">
-    <ion-card>
+<ion-content>
+    <ion-card class="centrado-card">
         <ion-card-header>
-            <ion-card-title>Iniciar Sesion</ion-card-title>
+            <ion-card-title id="color2">Iniciar Sesion</ion-card-title>
         </ion-card-header>
-        <ion-item lines="full">
-            <ion-label position="stacked">Nombre De Usuario</ion-label>
-            <ion-input type="text" placeholder="Usuario123" minlenght="8" maxlenght="15"></ion-input>
-        </ion-item>
-        <ion-item lines="full">
-            <ion-label position="stacked">Contrseña</ion-label>
-            <ion-input type="password" placeholder="********" minlenght="8" maxlenght="15"></ion-input>
-        </ion-item>
-        <ion-button expand="full">Ingresar</ion-button>
+        <form>
+            <ion-item id="usuario" lines="full">
+                <ion-label position="stacked">Nombre De Usuario</ion-label>
+                <ion-input type="email" placeholder="Usuario123" minlenght="8" maxlenght="15"></ion-input>
+            </ion-item>
+            <br>
+            <ion-item id="usuario" lines="full">
+                <ion-label position="stacked">Contrseña</ion-label>
+                <ion-input type="password" placeholder="********" minlenght="8" maxlenght="15"></ion-input>
+            </ion-item>
+            <ion-button expand="full">Ingresar</ion-button>
+        </form>
     </ion-card>
 </ion-content>

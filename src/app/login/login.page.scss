@@ -1,12 +1,39 @@
-ion-content {
+.centrado-card {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    /* Opcional: Asegura que el ion-content ocupe toda la altura de la ventana. */
+    height: 40vh;
+    margin-bottom: 180px;
+    margin-top: 150px;
+    background-color: #dbb020;
+    box-shadow: #000000;
 }
 
-ion-card-title {
-    text-align: center;
-    /* Centra el título del ion-card */
+#usuario {
+    display: inline-block;
+    text-align: left;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#color1 {
+    margin-top: 30px;
+    background-color: #1b83be;
+    padding: 30px 30px;
+    box-shadow: #000000;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#color2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+}
+
+ion-input {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+ion-label {
+    text-align: left;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
