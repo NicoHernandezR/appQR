@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'generar-qr',
     loadChildren: () => import('./generar-qr/generar-qr.module').then( m => m.GenerarQrPageModule)
+  },  {
+    path: 'asignaturas-profes',
+    loadChildren: () => import('./asignaturas-profes/asignaturas-profes.module').then( m => m.AsignaturasProfesPageModule)
   }
+
 ];
 
 @NgModule({

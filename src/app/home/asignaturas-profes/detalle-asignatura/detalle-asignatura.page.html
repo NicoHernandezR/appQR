@@ -1,0 +1,38 @@
+<ion-header [translucent]="true" *ngIf = 'datosCargados === true'>
+  <ion-toolbar>
+    <ion-title> {{asignatura.nombre}} {{asignatura.seccion}} </ion-title>
+    <ion-title> Clases registradas: {{asignatura.clases_hechas}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div *ngFor="let alum of alumnos_detalle">
+
+    <ion-item button lines="full" 
+        (click)="mostrarDetalles(alum.rut)" 
+        detail="true" detail-icon="caret-forward-outline"
+        id="item{{alum.rut}}">
+        <ion-label>{{alum.alum_nom}}  </ion-label>
+        <ion-label slot="end"> {{alum.porc_asis}}% </ion-label>
+    </ion-item>
+  
+    <ion-item class="ion-hide detalles{{alum.rut}}">
+      <ion-label>
+          Rut: 
+      </ion-label>
+      <ion-label slot="end">{{alum.rut}}</ion-label>
+    </ion-item>
+    <ion-item lines="full" class="ion-hide detalles{{alum.rut}}">
+      <ion-label>Asistencias: </ion-label>
+      <ion-label slot="end">
+          {{alum.cant_asis}}
+      </ion-label>
+    </ion-item>
+
+  
+  </div>
+  
+
+
+</ion-content>

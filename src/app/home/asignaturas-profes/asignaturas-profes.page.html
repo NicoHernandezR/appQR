@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Lista Asignaturas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Lista Asignaturas</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item button *ngFor="let asig of listaAsignatura"
+  detail="true" detail-icon="caret-forward-outline"
+  (click)="detalleAsignatura(asig.id_asignatura)">
+    <ion-label> {{asig.nombre}}  {{asig.seccion}} </ion-label>
+  </ion-item>
+
+</ion-content>

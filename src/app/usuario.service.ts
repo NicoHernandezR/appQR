@@ -19,6 +19,19 @@ export class UsuarioService {
     gmail: "ana.diazg@example.com"
   };
 
+  inUsuarioProfe : InUsuario = {
+    id: 1,
+    rut: 9530451,
+    dv: "3",
+    p_nombre: "Ariel",
+    s_nombre: "Juan",
+    ap_materno: "Albornoz",
+    ap_paterno: "Cancino",
+    fec_nac: "1980-03-30T00:00:00Z",
+    gmail: "ari.cancino@profesor.duoc.cl"
+  };
+
+  listaAsignatura : any;
 
   constructor() { }
 
