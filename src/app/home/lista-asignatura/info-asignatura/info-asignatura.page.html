@@ -1,13 +1,29 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" *ngFor="let asig of detalles_asig" >
   <ion-toolbar>
-    <ion-title>info-asignatura</ion-title>
+    <ion-title > {{asig.asig_nom}} {{asig.seccion}} </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">info-asignatura</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" *ngFor="let asig of detalles_asig">
+
+  <ion-item>
+    <ion-text>Profesor: {{asig.nom_profe}} </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-text>Clases Asistidas: </ion-text>
+    <ion-text slot="end"> {{asig.cant_asis}} </ion-text>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-text>Clases Hechas:  </ion-text> 
+    <ion-text slot="end">{{asig.clases_hechas}} </ion-text>
+  </ion-item>
+
+  <ion-item>
+    <ion-text>Asistencia: </ion-text>
+    <ion-text slot="end"> {{asig.porc_asis}}% </ion-text>
+  </ion-item>
+
 </ion-content>

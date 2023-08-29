@@ -1,13 +1,89 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>listaAsignatura</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">listaAsignatura</ion-title>
+      <ion-title size="large">Lista de Asignaturas</ion-title>
     </ion-toolbar>
   </ion-header>
+
+
+<!--
+<ion-list *ngFor="let asig of listaAsignatura" style="height: auto;">
+  <ion-button (click)="verAsignatura(asig.id_asignatura)" expand="block" fill="clear" shape="round">
+    <ion-title>{{asig.nombre}}  {{asig.seccion}} </ion-title>
+    <ion-text >
+      {{asig.p_nombre}}  {{asig.ap_paterno}} 
+    </ion-text>
+</ion-button>
+</ion-list>
+
+<ion-item *ngFor="let asig of listaAsignatura">
+  <ion-button (click)="activarModal(asig.id_asignatura)" expand="block" fill="clear" shape="round">
+    <ion-title>{{asig.nombre}}  {{asig.seccion}} </ion-title>
+    <ion-text >
+      {{asig.p_nombre}}  {{asig.ap_paterno}} 
+    </ion-text>
+</ion-button>
+
+
+<ion-modal [isOpen]= "modal_asig === asig.id_asignatura">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Modal</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="desactivarModal()">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum quidem recusandae ducimus quos
+        reprehenderit. Veniam, molestias quos, dolorum consequuntur nisi deserunt omnis id illo sit cum qui. Eaque,
+        dicta.
+      </p>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+</ion-item>
+-->
+
+
+<div *ngFor="let asig of listaAsignatura">
+
+  <ion-item button lines="full" 
+      (click)="mostrarDetalles(asig.id_asignatura)" 
+      detail="true" detail-icon="caret-forward-outline"
+      id="item{{asig.id_asignatura}}">
+      <ion-label>{{asig.asig_nom}}  {{asig.seccion}} </ion-label>
+      <ion-label slot="end"> {{asig.porc_asis}}% </ion-label>
+  </ion-item>
+
+  <ion-item class="ion-hide detalles{{asig.id_asignatura}}">
+    <ion-label>
+        Profesor: 
+    </ion-label>
+    <ion-label slot="end">{{asig.pro_nom}}</ion-label>
+  </ion-item>
+
+  <ion-item class="ion-hide detalles{{asig.id_asignatura}}">
+    <ion-label>
+      Nº de clases registradas: 
+    </ion-label>
+    <ion-label slot="end">{{asig.clases_hechas}}</ion-label>
+  </ion-item>
+
+  <ion-item lines="full" class="ion-hide detalles{{asig.id_asignatura}}">
+    <ion-label>
+        Asistencia: 
+    </ion-label>
+    <ion-label slot="end">{{asig.cant_asis}}</ion-label>
+  </ion-item>
+
+</div>
+
+
 </ion-content>
+
+
