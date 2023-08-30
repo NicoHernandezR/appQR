@@ -20,12 +20,23 @@
     
   <ion-item class="ion-text-center">
     <ion-select label="Asignatura" placeholder="Seleccionar"
-    (ionChange)="generarQR($event)">
+    (ionChange)="cargarHoras($event)">
       <ion-select-option *ngFor="let asig of listaAsignatura" 
       [value]="asig.id_asignatura"> {{asig.nombre}} {{asig.seccion}} </ion-select-option>
     </ion-select>
   </ion-item>
 
+  <ion-item class="ion-text-center" *ngIf="cargarHorasSelect">
+    <ion-select label="Clase" placeholder="Seleccionar"
+    (ionChange)="generarQR($event)">
+      <ion-select-option *ngFor="let hora of horasAsignatura" 
+      [value]="hora.id"> 
+         {{hora.dia_nombre}} 
+         {{hora.hora_ini}} -
+         {{hora.hora_fin}} 
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
 
   <ion-card class="ion-text-center" *ngIf="qrGenerado" >
     <ion-card-content style="background-color: white;">

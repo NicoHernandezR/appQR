@@ -10,10 +10,13 @@ export class ApiService {
   private apiAsistencia = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asistencia/asistencia/'
   private apiAsitenciaAlumno = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asignatura/asignaturaAlumno/'
   private apiAsignaturasProfe = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asignatura/asignaturasProfe/'
+  private apiClasesAsignatura = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asignaturaSemana/vincularAsignatura/'
   private apiDetalleAsignatura = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asignatura/detalleAsignatura/';
   private apiAsignatura = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asignatura/asignatura/'
   private apiComprobarAlumno = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/alumno/comprobarAlumno/'
   private apiComprobarProfe = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/profesor/comprobarUsuario/'
+  private apiAumentarClasesHechas = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asignatura/asignatura/'
+  private apiAumentarAsistencia = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asistencia/aumentarAsistencia'
 
   constructor(private usuService : UsuarioService) {}
 
@@ -109,6 +112,20 @@ export class ApiService {
     }
   }
 
+  async cargarHorasClases(id : number) {
+    try {
+      const respuesta = await fetch(this.apiClasesAsignatura + id);
+      console.log('respuesta')
+      if (!respuesta.ok) {
+        throw new Error('Error al obtener los datos');
+      }
+
+      const datos = await respuesta.json();
+      return datos;
+    } catch (error) {
+    }
+  }
+
   async detalleAsignaturaProfe(id : number) {
     try {
       const respuesta = await fetch(this.apiDetalleAsignatura + id);
@@ -136,6 +153,53 @@ export class ApiService {
       const datos = await respuesta.json();
       console.log('datos')
       return datos;
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+  async aumentarClases(id : number) {
+    try {
+      const url = this.apiAumentarClasesHechas + id;
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json', // Especifica el tipo de contenido del cuerpo
+        },
+        body: JSON.stringify({}), // Puedes enviar un objeto vacío si no necesitas enviar datos específicos en el cuerpo
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error al realizar la solicitud');
+      }
+  
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+  async aumentarAsistencia(id_asignatura : number, hora_alum : string, 
+    dia_asig : string | undefined, id_hora : number) {
+    try {
+      const url = this.apiAumentarAsistencia;
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json', // Especifica el tipo de contenido del cuerpo
+        },
+        body: JSON.stringify({
+          "id_asignatura" : id_asignatura,
+          "hora_alum" : hora_alum,
+          "dia_asig" : dia_asig,
+          "id_alumno" : this.usuService.inUsuario.id,
+          "id_hora" : id_hora
+        }), // Puedes enviar un objeto vacío si no necesitas enviar datos específicos en el cuerpo
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error al realizar la solicitud');
+      }
+  
     } catch (error) {
       console.error('Error:', error);
     }
