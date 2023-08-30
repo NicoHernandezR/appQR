@@ -7,9 +7,11 @@ import { UsuarioService } from './usuario.service';
 export class ApiService {
   private apiUrl = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/cantante/cantante'; // Reemplaza con la URL real de tu API
   private apiListaAsignatura = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/alumno/listaAsignaturas/'
-  private apiDetalleAsignatura = 'aaaaaaaaaaaa';
   private apiAsistencia = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asistencia/asistencia/'
   private apiAsitenciaAlumno = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asignatura/asignaturaAlumno/'
+  private apiAsignaturasProfe = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asignatura/asignaturasProfe/'
+  private apiDetalleAsignatura = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asignatura/detalleAsignatura/';
+  private apiAsignatura = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asignatura/asignatura/'
 
   constructor(private usuService : UsuarioService) {}
 
@@ -77,6 +79,53 @@ export class ApiService {
   async detalleAsignaturaAlumno() {
     try {
       const respuesta = await fetch(this.apiAsitenciaAlumno + this.usuService.inUsuario.id);
+      console.log('respuesta')
+      if (!respuesta.ok) {
+        throw new Error('Error al obtener los datos');
+      }
+
+      const datos = await respuesta.json();
+      console.log('datos')
+      return datos;
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+  async cargarAsignaturasProfe() {
+    try {
+      const respuesta = await fetch(this.apiAsignaturasProfe + this.usuService.inUsuarioProfe.id);
+      console.log('respuesta')
+      if (!respuesta.ok) {
+        throw new Error('Error al obtener los datos');
+      }
+
+      const datos = await respuesta.json();
+      console.log('datos')
+      return datos;
+    } catch (error) {
+    }
+  }
+
+  async detalleAsignaturaProfe(id : number) {
+    try {
+      const respuesta = await fetch(this.apiDetalleAsignatura + id);
+      console.log('respuesta')
+      if (!respuesta.ok) {
+        throw new Error('Error al obtener los datos');
+      }
+
+      const datos = await respuesta.json();
+      console.log('datos')
+      return datos;
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+  async asignatura(id: number) {
+    try {
+      const respuesta = await fetch(this.apiAsignatura + id);
       console.log('respuesta')
       if (!respuesta.ok) {
         throw new Error('Error al obtener los datos');

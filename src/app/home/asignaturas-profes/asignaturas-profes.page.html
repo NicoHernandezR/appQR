@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-buttons slot="end">
+      <ion-icon size="large" class="ion-margin-end" name="person-circle-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Volver"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="centered-title">Lista Asignaturas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <ion-item button *ngFor="let asig of listaAsignatura"
+  detail="true" detail-icon="caret-forward-outline"
+  (click)="detalleAsignatura(asig.id_asignatura)">
+    <ion-label> {{asig.nombre}}  {{asig.seccion}} </ion-label>
+  </ion-item>
+
+</ion-content>

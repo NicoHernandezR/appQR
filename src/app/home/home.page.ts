@@ -21,8 +21,16 @@ export class HomePage {
     this.router.navigate(['home/lista-asignatura'])
   }
 
+  irAsignaturasProfe() {
+    this.router.navigate(['home/asignaturas-profes'])
+  }
+
   irScannearQR() {
     this.router.navigate(['home/scaner-qr'])
+  }
+
+  generarQR() {
+    this.router.navigate(['home/generar-qr'])
   }
 
   async llamarApi() {
