@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 @Component({
@@ -6,7 +6,7 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
   templateUrl: './scaner-qr.page.html',
   styleUrls: ['./scaner-qr.page.scss'],
 })
-export class ScanerQrPage implements OnInit {
+export class ScanerQrPage implements OnInit, OnDestroy{
 
   scannedResult: any
 
@@ -55,4 +55,9 @@ export class ScanerQrPage implements OnInit {
     document.querySelector('body')?.classList.remove('scanner-active');
     BarcodeScanner.stopScan()
   }
+
+  ngOnDestroy(): void {
+    this.stopScan()
+  }
+
 }

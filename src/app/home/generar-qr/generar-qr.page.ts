@@ -34,7 +34,7 @@ export class GenerarQrPage implements OnInit {
       return;
     }
 
-    this.dataQR = "{id_asignatura : " + idAsig + "}"
+    this.dataQR = '{"id_asignatura" : ' + idAsig + '}'
     this.qrGenerado = true
   }
 
