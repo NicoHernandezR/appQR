@@ -50,6 +50,16 @@ export class ScanerQrPage implements OnInit, OnDestroy{
     }
   }
 
+  actualizarAsistencia() {
+    const fechaHoraActual = new Date();
+    const diaSemana = fechaHoraActual.getDay();
+    const hora = fechaHoraActual.getHours();
+    const minutos = fechaHoraActual.getMinutes();
+    
+
+  }
+
+
   stopScan() {
     BarcodeScanner.showBackground();
     document.querySelector('body')?.classList.remove('scanner-active');

@@ -12,6 +12,8 @@ export class ApiService {
   private apiAsignaturasProfe = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asignatura/asignaturasProfe/'
   private apiDetalleAsignatura = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asignatura/detalleAsignatura/';
   private apiAsignatura = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asignatura/asignatura/'
+  private apiComprobarAlumno = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/alumno/comprobarAlumno/'
+  private apiComprobarProfe = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/profesor/comprobarUsuario/'
 
   constructor(private usuService : UsuarioService) {}
 
@@ -139,5 +141,21 @@ export class ApiService {
     }
   }
 
+  async comprobarAlumno(gmail : string, contrasenia : string) {
+    try {
+      const respuesta = await fetch(this.apiComprobarAlumno + gmail + '/' + contrasenia);
+      console.log('respuesta')
+      if (!respuesta.ok) {
+        throw new Error('Error al obtener los datos');
+      }
+
+      const datos = await respuesta.json();
+      console.log(datos)
+      console.log('datos')
+      return datos;
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
 
   }

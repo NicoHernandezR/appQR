@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { NavController, ToastController } from '@ionic/angular';
+import { ApiService } from '../api.service';
 
 
 @Component({
@@ -16,9 +17,11 @@ export class LoginPage implements OnInit {
   }
   usuarios: string[];
 
+  info_usuario : any;
   
   field: string = "";
-  constructor(public navCtrl: NavController,private router: Router, public toastController: ToastController) {
+  constructor(public navCtrl: NavController,private router: Router, 
+    public toastController: ToastController, private apiService : ApiService ) {
     this.usuarios = [this.user.usuario];
 
    }
@@ -26,19 +29,20 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  aceptar() {
-    if (this.validateModel(this.user)) {
-      this.presentToast("Bienvenido " + this.user.usuario);
-      let navigationExtras: NavigationExtras = {
-        state: {
-          user: this.user 
-        }
-      };
-      this.router.navigate(['home.page.hmtl'], navigationExtras); 
-    }else{
-      this.presentToast("Falta ingresar: "+this.field, 4500);
+  async aceptar() {
+    console.log(this.user.usuario)
+    console.log(this.user.password)
+    this.info_usuario = await this.apiService.comprobarAlumno(this.user.usuario, this.user.password)
+
+    console.log(this.info_usuario.items.length)
+
+    if (this.info_usuario.items.length === 0){
+      return;
     }
 
+    this.info_usuario = this.info_usuario.items[0]
+    console.log(this.info_usuario)
+    this.router.navigate(['/home'])
 
   }
 
