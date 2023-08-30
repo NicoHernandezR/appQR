@@ -27,21 +27,8 @@ export class LoginPage implements OnInit {
   }
 
   aceptar() {
-    if (this.validateModel(this.user)) {
-      this.presentToast("Bienvenido " + this.user.usuario);
-      let navigationExtras: NavigationExtras = {
-        state: {
-          user: this.user 
-        }
+    this.router.navigate(['/home']);
       };
-      this.router.navigate(['home.page.hmtl'], navigationExtras); 
-    }else{
-      this.presentToast("Falta ingresar: "+this.field, 4500);
-    }
-
-
-  }
-
   validateModel(model: any) {
     for (var [key, value] of Object.entries(model)) {
       if (value == "") {
