@@ -1,17 +1,20 @@
     @keyframes changeBackgroundColor {
         from {
-            color: #ffffff;
+            color: #ffff;
+ 
+
         }
         to {
-            color: #dbb020;
+            color: #1b83be;
         }
     }
     
     #animated-button {
         width: 250px;
+        --ion-color-primary: #1b83be;
         animation-name: changeBackgroundColor;
         animation-duration: 5s;
-        animation-timing-function: ease;
+        animation-timing-function: ease-in;
         animation-iteration-count: 100;
     }
     
