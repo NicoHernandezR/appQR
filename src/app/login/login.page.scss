@@ -1,7 +1,6 @@
     @keyframes changeBackgroundColor {
         from {
             color: #ffff;
- 
 
         }
         to {
@@ -11,7 +10,6 @@
     
     #animated-button {
         width: 250px;
-        --ion-color-primary: #1b83be;
         animation-name: changeBackgroundColor;
         animation-duration: 5s;
         animation-timing-function: ease-in;
