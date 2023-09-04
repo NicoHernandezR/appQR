@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NavController, ToastController } from '@ionic/angular';
+import { NavigationExtras, Router } from '@angular/router';
+import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
 import { ApiService } from '../api.service';
+
 
 
 @Component({
@@ -16,12 +17,12 @@ export class LoginPage implements OnInit {
     password: ""
   }
   usuarios: string[];
-
   info_usuario : any;
   
   field: string = "";
+ 
   constructor(public navCtrl: NavController,private router: Router, 
-    public toastController: ToastController, private apiService : ApiService ) {
+    public toastController: ToastController, private apiService : ApiService, private loadingCtrl: LoadingController, private alertController: AlertController ) {
     this.usuarios = [this.user.usuario];
 
    }
@@ -37,6 +38,14 @@ export class LoginPage implements OnInit {
     console.log(this.info_usuario.items.length)
 
     if (this.info_usuario.items.length === 0){
+      const alert = await this.alertController.create({
+        header: '¡ERROR!',
+        subHeader: 'Error al ingresar',
+        message: 'El email o la contraseña son incorrectos!',
+        buttons: ['OK'],
+      });
+  
+      await alert.present();
       return;
     }
 
@@ -44,23 +53,28 @@ export class LoginPage implements OnInit {
     console.log(this.info_usuario)
     this.router.navigate(['/home'])
 
+    this.info_usuario = this.info_usuario.items[0]
+    console.log(this.info_usuario)
+    let nav: NavigationExtras = {
+      state: { email : this.user.usuario}
+    }
+    this.router.navigate(['/home'],nav)
+
+    const loading = await this.loadingCtrl.create({
+      message: 'Cargando, Espere...',
+      duration: 3000,
+      keyboardClose: true,
+      showBackdrop: true,
+      spinner: "crescent" 
+    });
+
+    loading.present();
+
   }
 
-  validateModel(model: any) {
-    for (var [key, value] of Object.entries(model)) {
-      if (value == "") {
-        this.field = key;
-        return false;
-      }
-    }
-    return true;
-  }
-  async presentToast(msg: string, duracion?: number) {
-    const toast = await this.toastController.create({
-      message: msg,
-      duration: duracion ? duracion : 2000
-    });
-    toast.present();
+  isValidEmail(): boolean {
+    const emailPattern = /[A-Za-z0-9]+@[A-Za-z0-9]+\.[a-z]{2,4}/;
+    return emailPattern.test(this.user.usuario);
   }
 
 }

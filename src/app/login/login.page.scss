@@ -1,12 +1,70 @@
-ion-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    /* Opcional: Asegura que el ion-content ocupe toda la altura de la ventana. */
-}
+    @keyframes changeBackgroundColor {
+        from {
+            color: #ffff;
 
-ion-card-title {
-    text-align: center;
-    /* Centra el título del ion-card */
-}
+        }
+        to {
+            color: #1b83be;
+        }
+    }
+    
+    #animated-button {
+        width: 250px;
+        animation-name: changeBackgroundColor;
+        animation-duration: 5s;
+        animation-timing-function: ease-in;
+        animation-iteration-count: 100;
+    }
+    
+    .centrado-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 40vh;
+        background-color: #dbb020;
+    }
+    
+    #usuario {
+        background-color: #ffffff;
+        text-align: left;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    
+    #contra {
+        width: 260px;
+        text-align: left;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    
+    #color1 {
+        display: flex;
+        margin-top: 30px;
+        background-color: #1b83be;
+        padding: 20px;
+        box-shadow: #000000;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    
+    #color2 {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 30px;
+    }
+    
+    ion-input {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    
+    ion-label {
+        text-align: left;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    
+    #icono1 {
+        padding-block-start: 10px;
+    }
+    
+    #title {
+        font-size: 25px;
+        color: #ffffff;
+    }

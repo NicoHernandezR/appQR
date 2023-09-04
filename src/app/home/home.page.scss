@@ -1,27 +1,37 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+#title{
+    font-size: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+
+#inicio{
+display: block;
+color: #dbb020;
+
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+#button{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    --ion-color-primary: #dbb020;
+    --ion-color-primary-contrast: #ffff;
 
-  color: #8c8c8c;
-
-  margin: 0;
 }
+#detalleTitle{
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: left;
+    color: #dbb020;
 
-#container a {
-  text-decoration: none;
+}
+#datos{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    height: 20px;
+    width: 50px;
+    text-align: left;
+
+    
 }

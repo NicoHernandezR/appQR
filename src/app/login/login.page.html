@@ -1,21 +1,28 @@
-<ion-header [translucent]="true">
-    <ion-toolbar>
-        <ion-title>Bienvenido A La App</ion-title>
-    </ion-toolbar>
+<ion-header [translucent]="true" id="color1">
+    <ion-icon size="large" class="ion-margin-start" name="people"></ion-icon>
+    <ion-title id="title">Bienvenido al Login!</ion-title>
 </ion-header>
-<ion-content class="ion-justify-content-center">
-    <ion-card>
+<br>
+<br>
+<br>
+<br>
+<ion-content>
+    <ion-card class="centrado-card">
         <ion-card-header>
-            <ion-card-title>Iniciar Sesion</ion-card-title>
+            <ion-card-title id="color2">Iniciar Sesion</ion-card-title>
         </ion-card-header>
-        <ion-item lines="full">
-            <ion-label position="stacked">Nombre De Usuario</ion-label>
-            <ion-input [(ngModel)]="user.usuario" type="text" placeholder="Usuario123" minlenght="8" maxlenght="15"></ion-input>
+        <ion-item id="usuario" lines="full">
+            <ion-icon slot="start" name="person"></ion-icon>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input pattern="[A-Za-z0-9]+@[A-Za-z0-9]+\.[a-z]{2,4}" required [(ngModel)]="user.usuario" type="email" placeholder="fr.hernandez@duocuc.cl"></ion-input>
         </ion-item>
-        <ion-item lines="full">
-            <ion-label position="stacked">Contrseña</ion-label>
-            <ion-input [(ngModel)]="user.password" type="password" placeholder="********" minlenght="8" maxlenght="15"></ion-input>
+        <br>
+        <ion-item id="contra" lines="full">
+            <ion-icon slot="start" name="key"></ion-icon>
+            <ion-label position="floating">Contrseña</ion-label>
+            <ion-input required [(ngModel)]="user.password" type="password" placeholder="********"></ion-input>
         </ion-item>
-        <ion-button (click)="aceptar()" expand="full">Ingresar</ion-button>
+        <ion-button id="animated-button" shape="round" [disabled]="!isValidEmail()" expand="full" (click)="aceptar()">Ingresar</ion-button>
+        <ion-button id="animated-button" shape="round" expand="full">Recuperar contraseña</ion-button>
     </ion-card>
 </ion-content>
