@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../usuario.service';
 import { ApiService } from '../api.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'
 
 
 @Component({
@@ -16,13 +16,13 @@ export class HomePage implements OnInit{
   compDatos: boolean = false;
   email: string='';
   tipoUsuario:string='';
+  usu=this.usuService.inUsu
 
 
   constructor( private usuService : UsuarioService, private router: Router,
     private apiService : ApiService, private actRoute: ActivatedRoute) {}
 
-  irAsignaturas() {
-    this.router.navigate(['home/lista-asignatura'])
+   irAsignaturas() {
   }
 
   irAsignaturasProfe() {
