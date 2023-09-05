@@ -17,7 +17,22 @@ export class UsuarioService {
     ap_paterno: "Gutiérrez",
     fec_nac: "2004-10-12T00:00:00Z",
     gmail: "ana.diazg@example.com"
+    ,
+    tipoUsuario: ""
   };
+
+  inUsu : InUsuario = {
+    id : -1,
+    rut: 0,
+    dv: "",
+    p_nombre: "",
+    s_nombre: "",
+    ap_materno: "",
+    ap_paterno: "",
+    fec_nac: "",
+    gmail: "",
+    tipoUsuario: ""
+  }
 
   inUsuarioProfe : InUsuario = {
     id: 1,
@@ -29,6 +44,8 @@ export class UsuarioService {
     ap_paterno: "Cancino",
     fec_nac: "1980-03-30T00:00:00Z",
     gmail: "ari.cancino@profesor.duoc.cl"
+    ,
+    tipoUsuario: ""
   };
 
   listaAsignatura : any;

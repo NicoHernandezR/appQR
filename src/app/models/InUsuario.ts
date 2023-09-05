@@ -7,7 +7,8 @@ export interface InUsuario {
   ap_materno: string,
   ap_paterno:string,
   fec_nac:string,
-  gmail:string
+  gmail:string,
+  tipoUsuario:string
   }
 
 

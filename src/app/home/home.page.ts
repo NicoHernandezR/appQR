@@ -15,6 +15,7 @@ export class HomePage implements OnInit{
   detalle: any
   compDatos: boolean = false;
   email: string='';
+  tipoUsuario:string='';
 
 
   constructor( private usuService : UsuarioService, private router: Router,
@@ -45,15 +46,27 @@ export class HomePage implements OnInit{
     this.actRoute.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation()?.extras.state) {
         this.email = this.router.getCurrentNavigation()?.extras?.state?.['email'];
-        console.log("this.email")
-        console.log(this.email)
+        this.tipoUsuario = this.router.getCurrentNavigation()?.extras?.state?.['tipoUsuario'];
       }
     })
-    this.detalle = await this.apiService.detalleAlumno(this.email);
+
+    if (this.tipoUsuario === 'profesor') {
+      this.detalle = await this.apiService.detalleProfesor(this.email);
+    }else{
+      this.detalle = await this.apiService.detalleAlumno(this.email);
+    }
+ 
+
     this.detalle=this.detalle.items[0]
-    console.log("this.detalle")
     console.log(this.detalle)
+    this.usuService.inUsu.id = this.detalle.id
+    this.usuService.inUsu.p_nombre = this.detalle.p_nombre
+    this.usuService.inUsu.ap_paterno = this.detalle.ap_paterno
+    this.usuService.inUsu.gmail = this.detalle.gmail
+    this.usuService.inUsu.tipoUsuario = this.tipoUsuario
     this.compDatos = true
+
+
 
     
   }

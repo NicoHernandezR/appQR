@@ -16,26 +16,14 @@
         <ion-item>
             <ion-label id="datos">Nombre: {{detalle.p_nombre}} {{detalle.ap_paterno}} </ion-label>
         </ion-item>
-            <ion-item>
+        <ion-item>
             <ion-label id="datos">Gmail: {{detalle.gmail}} </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label id="datos">Usuario: {{tipoUsuario}} </ion-label>
         </ion-item>
 
     </ion-card>
 
-    <ion-button id="button" class="ion-margin" (click)="irAsignaturas()" expand="block" shape="round">
-        Asignaturas Alumno
-    </ion-button>
-
-    <ion-button id="button" class="ion-margin" (click)="irScannearQR()" expand="block" shape="round">
-        Scannear QR
-    </ion-button>
-
-    <ion-button id="button" class="ion-margin" (click)="irAsignaturasProfe()" expand="block" shape="round">
-        Asignaturas Profe
-    </ion-button>
-
-    <ion-button id="button" class="ion-margin" (click)="generarQR()" expand="block" shape="round">
-        Generar QR
-    </ion-button>
 
 </ion-content>

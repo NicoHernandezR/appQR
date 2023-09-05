@@ -9,10 +9,10 @@
     <ion-content>
       <ion-list>
         <ion-item routerLink="/home">Inicio</ion-item>
-        <ion-item routerLink="/home/lista-asignatura">Asignaturas Alumnos</ion-item>
-        <ion-item routerLink="/home/scaner-qr">Scannear QR</ion-item>
-        <ion-item routerLink="/home/asignaturas-profes">Asignaturas Profes</ion-item>
-        <ion-item routerLink="/home/generar-qr">Generar QR</ion-item>
+        <ion-item *ngIf="usu.tipoUsuario==='alumno'" routerLink="/home/lista-asignatura">Asignaturas Alumnos</ion-item>
+        <ion-item *ngIf="usu.tipoUsuario==='alumno'" routerLink="/home/scaner-qr">Scannear QR</ion-item>
+        <ion-item *ngIf="usu.tipoUsuario==='profesor'" routerLink="/home/asignaturas-profes">Asignaturas Profes</ion-item>
+        <ion-item *ngIf="usu.tipoUsuario==='profesor'" routerLink="/home/generar-qr">Generar QR</ion-item>
         <!-- Agrega más elementos del menú aquí -->
       </ion-list>
     </ion-content>
