@@ -30,7 +30,7 @@
         Asignaturas Alumno
     </ion-button>
 
-    <ion-buttonngIf="usu.tipoUsuario==='alumno'" 
+    <ion-button ngIf="usu.tipoUsuario==='alumno'" 
      id="button" class="ion-margin" (click)="irScannearQR()" expand="block" shape="round">
         Scannear QR
     </ion-button>
@@ -40,7 +40,7 @@
         Asignaturas Profe
     </ion-button>
 
-    <ion-buttonngIf="usu.tipoUsuario==='profesor'" 
+    <ion-button ngIf="usu.tipoUsuario==='profesor'" 
      id="button" class="ion-margin" (click)="generarQR()" expand="block" shape="round">
         Generar QR
     </ion-button>
