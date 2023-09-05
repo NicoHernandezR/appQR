@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Recuperar PassWord</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card class="centrado-card">
+    <ion-card-header>
+        <ion-card-title id="color2">Recuperar</ion-card-title>
+    </ion-card-header>
+    <ion-item id="usuario" lines="full">
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input pattern="[A-Za-z0-9]+@[A-Za-z0-9]+\.[a-z]{2,4}" required [(ngModel)]="usuario" type="email" placeholder="fr.hernandez@duocuc.cl"></ion-input>
+    </ion-item>
+    <ion-button id="animated-button" shape="round" expand="full" [disabled]="!isValidEmail()" (click)="recuperar()">Recuperar contraseña</ion-button>
+    <ion-item>
+      <ion-label>Contraseña: {{contra}} </ion-label>
+    </ion-item>
+</ion-card>
+</ion-content>

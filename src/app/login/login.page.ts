@@ -78,7 +78,11 @@ export class LoginPage implements OnInit {
 
   isValidEmail(): boolean {
     const emailPattern = /[A-Za-z0-9]+@[A-Za-z0-9]+\.[a-z]{2,4}/;
-    return emailPattern.test(this.user.usuario);
+    return emailPattern.test(this.user.usuario) && this.user.password !== '';
+  }
+
+  recuperar() {
+    this.router.navigate(['/recuperar-contra'])
   }
 
 }

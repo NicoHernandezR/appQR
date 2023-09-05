@@ -19,6 +19,8 @@ export class ApiService {
   private apiDetalleProfesor = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/profesor/detalleProfesor/'
   private apiAumentarClasesHechas = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asignatura/asignatura/'
   private apiAumentarAsistencia = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asistencia/aumentarAsistencia'
+  private apiRecuperarProfe = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/profesor/recuperar/'
+  private apiRecuperarAlum = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/alumno/recuperar/'
 
  
   constructor(private usuService : UsuarioService) {}
@@ -242,26 +244,25 @@ export class ApiService {
     }
     }
   
-    async comprobarProfesor(gmail : string, contrasenia : string) {
-      try {
-        const respuesta = await fetch(this.apiComprobarProfesor + gmail + '/' + contrasenia);
-        console.log('respuesta')
-        if (!respuesta.ok) {
-          throw new Error('Error al obtener los datos');
-        }
-  
-        const datos = await respuesta.json();
-        console.log(datos)
-        console.log('datos')
-        return datos;
-      } catch (error) {
-        console.error('Error:', error);
+  async comprobarProfesor(gmail : string, contrasenia : string) {
+    try {
+      const respuesta = await fetch(this.apiComprobarProfesor + gmail + '/' + contrasenia);
+      console.log('respuesta')
+      if (!respuesta.ok) {
+        throw new Error('Error al obtener los datos');
       }
-    }
 
-    async detalleProfesor(gmail: string){
-      try{
-        const respuesta = await fetch(this.apiDetalleProfesor + gmail);
+      const datos = await respuesta.json();
+      console.log(datos)
+      console.log('datos')
+      return datos;
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+  async detalleProfesor(gmail: string){
+    try{
+      const respuesta = await fetch(this.apiDetalleProfesor + gmail);
         console.log('respuesta')
         if (!respuesta.ok) {
           throw new Error('Error al obtener los datos');
@@ -275,5 +276,39 @@ export class ApiService {
         console.error('Error:', error);
       }
       }
-  }
+
+  async recuperarProfe(gmail: string){
+    try{
+      const respuesta = await fetch(this.apiRecuperarProfe + gmail);
+      console.log('respuesta')
+      if (!respuesta.ok) {
+        throw new Error('Error al obtener los datos');
+      }
+
+      const datos = await respuesta.json();
+      console.log(datos)
+      console.log('datos')
+      return datos;
+    } catch (error) {
+      console.error('Error:', error);
+    }
+    }      
+
+  async recuperarAlum(gmail: string){
+      try{
+        const respuesta = await fetch(this.apiRecuperarAlum + gmail);
+        console.log('respuesta')
+        if (!respuesta.ok) {
+          throw new Error('Error al obtener los datos');
+        }
+  
+        const datos = await respuesta.json();
+        console.log(datos)
+        console.log('datos')
+        return datos;
+      } catch (error) {
+        console.error('Error:', error);
+      }
+      }    
+    }
 
