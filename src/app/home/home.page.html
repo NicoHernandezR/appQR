@@ -25,5 +25,24 @@
 
     </ion-card>
 
+    <ion-button ngIf="usu.tipoUsuario==='alumno'" 
+     id="button" class="ion-margin" (click)="irAsignaturas()" expand="block" shape="round">
+        Asignaturas Alumno
+    </ion-button>
+
+    <ion-buttonngIf="usu.tipoUsuario==='alumno'" 
+     id="button" class="ion-margin" (click)="irScannearQR()" expand="block" shape="round">
+        Scannear QR
+    </ion-button>
+
+    <ion-button ngIf="usu.tipoUsuario==='profesor'" 
+     id="button" class="ion-margin" (click)="irAsignaturasProfe()" expand="block" shape="round">
+        Asignaturas Profe
+    </ion-button>
+
+    <ion-buttonngIf="usu.tipoUsuario==='profesor'" 
+     id="button" class="ion-margin" (click)="generarQR()" expand="block" shape="round">
+        Generar QR
+    </ion-button>
 
 </ion-content>

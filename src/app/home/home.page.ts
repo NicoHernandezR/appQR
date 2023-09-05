@@ -16,6 +16,7 @@ export class HomePage implements OnInit{
   compDatos: boolean = false;
   email: string='';
   tipoUsuario:string='';
+  usu=this.usuService.inUsu
 
 
   constructor( private usuService : UsuarioService, private router: Router,
