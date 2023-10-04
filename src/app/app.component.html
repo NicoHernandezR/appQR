@@ -1,6 +1,6 @@
 <ion-app>
 
-  <ion-menu side="start" contentId="main-content">
+  <ion-menu side="start" contentId="main-content" *ngIf="showSidebar()">
     <ion-header>
       <ion-toolbar>
         <ion-title>Menú</ion-title>
@@ -13,6 +13,11 @@
         <ion-item *ngIf="usu.tipoUsuario==='alumno'" routerLink="/home/scaner-qr">Scannear QR</ion-item>
         <ion-item *ngIf="usu.tipoUsuario==='profesor'" routerLink="/home/asignaturas-profes">Asignaturas Profes</ion-item>
         <ion-item *ngIf="usu.tipoUsuario==='profesor'" routerLink="/home/generar-qr">Generar QR</ion-item>
+        <ion-item>
+          <ion-button (click)="cerrarSesion()" expand="block" fill="clear" shape="round">
+            Click me
+          </ion-button>
+        </ion-item>
         <!-- Agrega más elementos del menú aquí -->
       </ion-list>
     </ion-content>

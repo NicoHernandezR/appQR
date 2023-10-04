@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InUsuario } from './models/InUsuario';
-import { Usuario } from './models/usuario';
+import { SessionService } from './session.service';
 
 @Injectable({
   providedIn: 'root'
@@ -50,8 +50,35 @@ export class UsuarioService {
 
   listaAsignatura : any;
 
-  constructor() { }
+  constructor(private sessionService: SessionService) { }
 
+  autentificar(user: any, tipoUsuario:string) {
+    this.inUsu.id = user.id
+    this.inUsu.p_nombre = user.p_nombre
+    this.inUsu.ap_paterno = user.ap_paterno
+    this.inUsu.gmail = user.gmail
+    this.inUsu.tipoUsuario = tipoUsuario
+    this.sessionService.saveSession(this.inUsu);
+  }
 
+  logout() {
+    this.inUsu = {
+      id : -1,
+      rut: 0,
+      dv: "",
+      p_nombre: "",
+      s_nombre: "",
+      ap_materno: "",
+      ap_paterno: "",
+      fec_nac: "",
+      gmail: "",
+      tipoUsuario: ""
+    }
+    this.sessionService.clearSession();
+  }
+
+  isAuthenticated(): boolean {
+    return this.sessionService.getSession() !== null;
+  }
 
 }

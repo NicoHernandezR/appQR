@@ -59,17 +59,9 @@ export class HomePage implements OnInit{
  
 
     this.detalle=this.detalle.items[0]
-    console.log(this.detalle)
-    this.usuService.inUsu.id = this.detalle.id
-    this.usuService.inUsu.p_nombre = this.detalle.p_nombre
-    this.usuService.inUsu.ap_paterno = this.detalle.ap_paterno
-    this.usuService.inUsu.gmail = this.detalle.gmail
-    this.usuService.inUsu.tipoUsuario = this.tipoUsuario
+    this.usuService.autentificar(this.detalle, this.tipoUsuario)
+    this.detalle = ''
     this.compDatos = true
-
-
-
-    
   }
 
 
