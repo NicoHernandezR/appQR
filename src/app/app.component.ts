@@ -19,6 +19,7 @@ export class AppComponent implements OnInit{
   }
 
   showSidebar() {
+    console.log(this.usu)
     return this.router.url !== '/login';
   }
 

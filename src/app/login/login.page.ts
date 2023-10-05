@@ -31,7 +31,7 @@ export class LoginPage implements OnInit,OnDestroy {
    }
 
   ngOnInit() {
-    
+
   }
 
   async aceptar() {
@@ -60,14 +60,8 @@ export class LoginPage implements OnInit,OnDestroy {
     }
 
     this.info_usuario = this.info_usuario.items[0]
-
-
-    if (tipoUsuario === 'profesor') {
-      this.info_usuario = await this.apiService.detalleProfesor(this.user.usuario);
-    }else{
-      this.info_usuario = await this.apiService.detalleAlumno(this.user.usuario);
-    }
-    this.info_usuario = this.info_usuario.items[0]
+    console.log("this.info_usuario")
+    console.log(this.info_usuario)
     this.usuService.autentificar(this.info_usuario, tipoUsuario)
 
     let nav: NavigationExtras = {
@@ -97,6 +91,7 @@ export class LoginPage implements OnInit,OnDestroy {
   }
 
   ionViewWillEnter() {
+    console.log('onViewWillEnter login')
     // Limpia los datos del usuario al volver a la página de inicio de sesión
       this.user = {
         usuario: '',
@@ -106,10 +101,6 @@ export class LoginPage implements OnInit,OnDestroy {
   }
 
   ngOnDestroy() {
-    this.user = {
-      usuario: "",
-      password: ""
-    }
   }
 
 }

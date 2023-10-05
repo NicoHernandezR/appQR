@@ -17,11 +17,12 @@ export class NoSesionGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
+    console.log(this.sessionService.getSession())
     if (this.sessionService.getSession()) {
-      this.router.navigate(['/home']);
-      return false;
+      return true;
     }
    
+    this.router.navigate(['/login']); 
     return true;
   }
 }

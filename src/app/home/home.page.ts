@@ -60,8 +60,6 @@ export class HomePage implements OnInit{
     }
  
     this.detalle=this.detalle.items[0]
-    this.usuService.autentificar(this.detalle, this.tipoUsuario)
-    this.detalle = ''
     this.usuService.cargadoMap.set(this.router.url, true)
     console.log("this.usuService.cargadoMap.get(this.router.url)")
     console.log(this.usuService.cargadoMap.get(this.router.url))
