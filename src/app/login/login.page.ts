@@ -24,7 +24,8 @@ export class LoginPage implements OnInit,OnDestroy {
  
   constructor(public navCtrl: NavController,private router: Router, 
     public toastController: ToastController, private apiService : ApiService,
-    private loadingCtrl: LoadingController, private alertController: AlertController) {
+    private loadingCtrl: LoadingController, private alertController: AlertController,
+    private usuService : UsuarioService) {
     this.usuarios = [this.user.usuario];
 
    }
@@ -61,6 +62,13 @@ export class LoginPage implements OnInit,OnDestroy {
     this.info_usuario = this.info_usuario.items[0]
 
 
+    if (tipoUsuario === 'profesor') {
+      this.info_usuario = await this.apiService.detalleProfesor(this.user.usuario);
+    }else{
+      this.info_usuario = await this.apiService.detalleAlumno(this.user.usuario);
+    }
+    this.info_usuario = this.info_usuario.items[0]
+    this.usuService.autentificar(this.info_usuario, tipoUsuario)
 
     let nav: NavigationExtras = {
       state: { email : this.user.usuario, tipoUsuario : tipoUsuario }
