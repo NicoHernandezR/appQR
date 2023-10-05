@@ -44,6 +44,8 @@ export class HomePage implements OnInit{
   }
 
   async ngOnInit() {
+    console.log('Inicio OnInit del Home')
+    this.usuService.cargadoMap.set(this.router.url, false)
     this.actRoute.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation()?.extras.state) {
         this.email = this.router.getCurrentNavigation()?.extras?.state?.['email'];
@@ -57,11 +59,18 @@ export class HomePage implements OnInit{
       this.detalle = await this.apiService.detalleAlumno(this.email);
     }
  
-
     this.detalle=this.detalle.items[0]
     this.usuService.autentificar(this.detalle, this.tipoUsuario)
     this.detalle = ''
+    this.usuService.cargadoMap.set(this.router.url, true)
+    console.log("this.usuService.cargadoMap.get(this.router.url)")
+    console.log(this.usuService.cargadoMap.get(this.router.url))
     this.compDatos = true
+    console.log('Final OnInit del Home')
+  }
+
+  ionViewWillEnter() {
+    this.usuService.cargadoMap.set(this.router.url, true)
   }
 
 

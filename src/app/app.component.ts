@@ -12,6 +12,7 @@ export class AppComponent implements OnInit{
   constructor(private usuService : UsuarioService,private router: Router) {}
 
   usu = this.usuService.inUsu
+  
 
   ngOnInit() {
 
@@ -24,5 +25,15 @@ export class AppComponent implements OnInit{
   cerrarSesion() {
     this.usuService.logout()
     this.router.navigate(['login'])
+  }
+
+  cargado() {
+    let url = this.router.url
+    if (!this.usuService.cargadoMap.has(url)) {
+      console.log("Solo deberia entrar el login y el recuperar")
+      return true
+    }
+    return this.usuService.cargadoMap.get(url)
+
   }
 }

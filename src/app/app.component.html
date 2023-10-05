@@ -25,4 +25,11 @@
   
   <ion-router-outlet id="main-content"></ion-router-outlet>
 
+  <ion-item *ngIf="!cargado()" id="miDiv">
+    <div class="loader"></div>
+  </ion-item>
+
+  
+  
+
 </ion-app>

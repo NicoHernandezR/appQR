@@ -49,8 +49,11 @@ export class UsuarioService {
   };
 
   listaAsignatura : any;
+  cargadoMap = new Map<string, boolean>();
+  
 
-  constructor(private sessionService: SessionService) { }
+  constructor(private sessionService: SessionService) {
+   }
 
   autentificar(user: any, tipoUsuario:string) {
     this.inUsu.id = user.id
