@@ -56,7 +56,7 @@ export class UsuarioService {
    }
 
   autentificar(user: any, tipoUsuario:string) {
-    this.inUsu.id = user.id_alumno
+    this.inUsu.id = user.id
     this.inUsu.p_nombre = user.p_nombre
     this.inUsu.ap_paterno = user.ap_paterno
     this.inUsu.gmail = user.gmail
