@@ -32,7 +32,7 @@ export class ListaAsignaturaPage implements OnInit {
     this.usuService.cargadoMap.set(this.router.url, false)
     this.listaAsignatura = await this.apiService.detalleAsignaturaAlumno()
     console.log('Obteniendo los valores del api')
-    this.listaAsignatura = this.listaAsignaturaJSON.items
+    this.listaAsignatura = this.listaAsignatura.items
     console.log(this.listaAsignatura)
     console.log("fin ngOnInit")
     this.usuService.cargadoMap.set(this.router.url, true)
