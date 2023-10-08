@@ -19,6 +19,7 @@ export class AppComponent implements OnInit{
   }
 
   showSidebar() {
+    this.usu = this.usuService.inUsu
     console.log(this.usu)
     return this.router.url !== '/login';
   }

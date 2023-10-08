@@ -30,7 +30,7 @@ export class ListaAsignaturaPage implements OnInit {
 
   async ngOnInit() {
     this.usuService.cargadoMap.set(this.router.url, false)
-    this.listaAsignaturaJSON = await this.apiService.detalleAsignaturaAlumno()
+    this.listaAsignatura = await this.apiService.detalleAsignaturaAlumno()
     console.log('Obteniendo los valores del api')
     this.listaAsignatura = this.listaAsignaturaJSON.items
     console.log(this.listaAsignatura)

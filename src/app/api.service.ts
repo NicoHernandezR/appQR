@@ -98,6 +98,7 @@ export class ApiService {
       console.log('datos')
       return datos;
     } catch (error) {
+      return error
       console.error('Error:', error);
     }
   }
