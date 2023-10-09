@@ -23,6 +23,7 @@ export class DetalleAsignaturaPage implements OnInit {
 
 
   async ngOnInit() {
+    this.usuService.cargadoMap.set(this.router.url, false)
     this.actRoute.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation()?.extras.state) {
         this.id_asig = this.router.getCurrentNavigation()?.extras?.state?.['id'];
@@ -35,6 +36,7 @@ export class DetalleAsignaturaPage implements OnInit {
     this.asignatura = this.asignatura.items[0]
     console.log(this.alumnos_detalle)
     this.actualizarHashtable()
+    this.usuService.cargadoMap.set(this.router.url, true)
     this.datosCargados = true;
 
     //this.alumnos_detalle = await this.apiService.detalleAsistencia(this.id_asig)

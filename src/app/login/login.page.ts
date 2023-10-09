@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController, LoadingController, NavController, ToastController } from '@ionic/angular';
 import { ApiService } from '../api.service';
+import { UsuarioService } from '../usuario.service';
 
 
 
@@ -10,7 +11,7 @@ import { ApiService } from '../api.service';
   templateUrl: 'login.page.html',
   styleUrls: ['login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements OnInit,OnDestroy {
 
   user = {
     usuario: "",
@@ -22,12 +23,15 @@ export class LoginPage implements OnInit {
   field: string = "";
  
   constructor(public navCtrl: NavController,private router: Router, 
-    public toastController: ToastController, private apiService : ApiService, private loadingCtrl: LoadingController, private alertController: AlertController ) {
+    public toastController: ToastController, private apiService : ApiService,
+    private loadingCtrl: LoadingController, private alertController: AlertController,
+    private usuService : UsuarioService) {
     this.usuarios = [this.user.usuario];
 
    }
 
   ngOnInit() {
+
   }
 
   async aceptar() {
@@ -56,23 +60,24 @@ export class LoginPage implements OnInit {
     }
 
     this.info_usuario = this.info_usuario.items[0]
-
-
+    console.log("this.info_usuario")
+    console.log(this.info_usuario)
+    this.usuService.autentificar(this.info_usuario, tipoUsuario)
 
     let nav: NavigationExtras = {
       state: { email : this.user.usuario, tipoUsuario : tipoUsuario }
     }
     this.router.navigate(['/home'],nav)
 
-    const loading = await this.loadingCtrl.create({
-      message: 'Cargando, Espere...',
-      duration: 3000,
-      keyboardClose: true,
-      showBackdrop: true,
-      spinner: "crescent" 
-    });
+    // const loading = await this.loadingCtrl.create({
+    //   message: 'Cargando, Espere...',
+    //   duration: 3000,
+    //   keyboardClose: true,
+    //   showBackdrop: true,
+    //   spinner: "crescent" 
+    // });
 
-    loading.present();
+    // loading.present();
 
   }
 
@@ -83,6 +88,19 @@ export class LoginPage implements OnInit {
 
   recuperar() {
     this.router.navigate(['/recuperar-contra'])
+  }
+
+  ionViewWillEnter() {
+    console.log('onViewWillEnter login')
+    // Limpia los datos del usuario al volver a la página de inicio de sesión
+      this.user = {
+        usuario: '',
+        password: ''
+      };
+      this.info_usuario = ''
+  }
+
+  ngOnDestroy() {
   }
 
 }

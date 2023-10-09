@@ -96,6 +96,8 @@ export class ApiService {
 
       const datos = await respuesta.json();
       console.log('datos')
+      console.log(datos)
+
       return datos;
     } catch (error) {
       console.error('Error:', error);

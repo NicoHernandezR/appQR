@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import { asig_list } from './asignatura'
 import { Router, NavigationExtras } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { UsuarioService } from 'src/app/usuario.service';
 
 
 @Component({
@@ -24,17 +25,19 @@ export class ListaAsignaturaPage implements OnInit {
   hashtable_div_detalle: { [key: number]: string } = {};
 
   constructor(private router: Router, private apiService : ApiService,
-    private elementRef: ElementRef, private renderer: Renderer2) { }
+    private elementRef: ElementRef, private renderer: Renderer2,
+    private usuService: UsuarioService) { }
 
   async ngOnInit() {
-    this.listaAsignaturaJSON = await this.apiService.detalleAsignaturaAlumno()
+    this.usuService.cargadoMap.set(this.router.url, false)
+    this.listaAsignatura = await this.apiService.detalleAsignaturaAlumno()
     console.log('Obteniendo los valores del api')
-    this.listaAsignatura = this.listaAsignaturaJSON.items
+    this.listaAsignatura = this.listaAsignatura.items
+    console.log(this.listaAsignatura)
     console.log("fin ngOnInit")
+    this.usuService.cargadoMap.set(this.router.url, true)
     this.actualizarHashtable()
-  }
-
-  ionViewWillEnter() {
+    
   }
 
 
@@ -96,6 +99,10 @@ export class ListaAsignaturaPage implements OnInit {
       }
       
 
+  }
+
+  cargado() {
+    return false
   }
 
 }
