@@ -16,12 +16,12 @@ export class HomePage implements OnInit{
   compDatos: boolean = false;
   email: string='';
 
-
   constructor( private usuService : UsuarioService, private router: Router,
     private apiService : ApiService, private actRoute: ActivatedRoute) {}
 
-  irAsignaturas() {
+  async irAsignaturas() {
     this.router.navigate(['home/lista-asignatura'])
+    
   }
 
   irAsignaturasProfe() {

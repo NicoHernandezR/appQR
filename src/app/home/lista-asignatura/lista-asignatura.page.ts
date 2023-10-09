@@ -32,6 +32,7 @@ export class ListaAsignaturaPage implements OnInit {
     this.listaAsignatura = this.listaAsignaturaJSON.items
     console.log("fin ngOnInit")
     this.actualizarHashtable()
+    
   }
 
   ionViewWillEnter() {
@@ -81,6 +82,7 @@ export class ListaAsignaturaPage implements OnInit {
       console.log('remove ion-hide')
     });
     itemTitle.setAttribute('lines', 'none');
+    
   }
 
   ocultarDetalle(id : number) {
