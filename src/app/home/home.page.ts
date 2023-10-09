@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../usuario.service';
 import { ApiService } from '../api.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'
 
 
 @Component({
@@ -15,13 +15,14 @@ export class HomePage implements OnInit{
   detalle: any
   compDatos: boolean = false;
   email: string='';
+  tipoUsuario:string='';
+  usu=this.usuService.inUsu
+
 
   constructor( private usuService : UsuarioService, private router: Router,
     private apiService : ApiService, private actRoute: ActivatedRoute) {}
 
-  async irAsignaturas() {
-    this.router.navigate(['home/lista-asignatura'])
-    
+   irAsignaturas() {
   }
 
   irAsignaturasProfe() {
@@ -42,20 +43,31 @@ export class HomePage implements OnInit{
   }
 
   async ngOnInit() {
+    console.log('Inicio OnInit del Home')
+    this.usuService.cargadoMap.set(this.router.url, false)
     this.actRoute.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation()?.extras.state) {
         this.email = this.router.getCurrentNavigation()?.extras?.state?.['email'];
-        console.log("this.email")
-        console.log(this.email)
+        this.tipoUsuario = this.router.getCurrentNavigation()?.extras?.state?.['tipoUsuario'];
       }
     })
-    this.detalle = await this.apiService.detalleAlumno(this.email);
-    this.detalle=this.detalle.items[0]
-    console.log("this.detalle")
-    console.log(this.detalle)
-    this.compDatos = true
 
-    
+    if (this.tipoUsuario === 'profesor') {
+      this.detalle = await this.apiService.detalleProfesor(this.email);
+    }else{
+      this.detalle = await this.apiService.detalleAlumno(this.email);
+    }
+ 
+    this.detalle=this.detalle.items[0]
+    this.usuService.cargadoMap.set(this.router.url, true)
+    console.log("this.usuService.cargadoMap.get(this.router.url)")
+    console.log(this.usuService.cargadoMap.get(this.router.url))
+    this.compDatos = true
+    console.log('Final OnInit del Home')
+  }
+
+  ionViewWillEnter() {
+    this.usuService.cargadoMap.set(this.router.url, true)
   }
 
 

@@ -17,11 +17,13 @@ export class AsignaturasProfesPage implements OnInit {
     private usuService : UsuarioService) { }
 
   async ngOnInit() {
+    this.usuService.cargadoMap.set(this.router.url, false)
     this.listaAsignaturaJSON = await this.apiService.cargarAsignaturasProfe()
     console.log('Obteniendo los valores del api')
     this.usuService.listaAsignatura = this.listaAsignaturaJSON.items
     this.listaAsignatura = this.listaAsignaturaJSON.items
     console.log(this.usuService.listaAsignatura)
+    this.usuService.cargadoMap.set(this.router.url, true)
     console.log("fin ngOnInit")
   }
 

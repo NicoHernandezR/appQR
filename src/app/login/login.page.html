@@ -1,11 +1,7 @@
 <ion-header [translucent]="true" id="color1">
-    <ion-icon size="large" class="ion-margin-start" name="people"></ion-icon>
     <ion-title id="title">Bienvenido al Login!</ion-title>
 </ion-header>
-<br>
-<br>
-<br>
-<br>
+
 <ion-content>
     <ion-card class="centrado-card">
         <ion-card-header>
@@ -23,6 +19,6 @@
             <ion-input required [(ngModel)]="user.password" type="password" placeholder="********"></ion-input>
         </ion-item>
         <ion-button id="animated-button" shape="round" [disabled]="!isValidEmail()" expand="full" (click)="aceptar()">Ingresar</ion-button>
-        <ion-button id="animated-button" shape="round" expand="full">Recuperar contraseña</ion-button>
+        <ion-button id="animated-button" shape="round" expand="full" (click)="recuperar()">Recuperar contraseña</ion-button>
     </ion-card>
 </ion-content>
