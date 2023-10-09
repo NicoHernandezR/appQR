@@ -206,10 +206,14 @@ export class ApiService {
       if (!response.ok) {
         throw new Error('Error al realizar la solicitud');
       }
+
+      return response
   
     } catch (error) {
       console.error('Error:', error);
+      return error
     }
+    
   }
 
   async comprobarAlumno(gmail : string, contrasenia : string) {
