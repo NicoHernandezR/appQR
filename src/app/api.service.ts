@@ -207,7 +207,8 @@ export class ApiService {
         throw new Error('Error al realizar la solicitud');
       }
 
-      return response
+      const datos = await response.json();
+      return datos;
   
     } catch (error) {
       console.error('Error:', error);

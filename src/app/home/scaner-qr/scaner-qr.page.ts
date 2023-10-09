@@ -60,8 +60,8 @@ export class ScanerQrPage implements OnInit, OnDestroy{
         BarcodeScanner.showBackground()
         document.querySelector('body')?.classList.remove('scanner-active');
         this.scaneando = ''
-        this.confirmar = this.actualizarAsistencia(this.scannedResult)
-        this.confirmar = this.confirmar.mensaje
+        await this.actualizarAsistencia(this.scannedResult)
+
       }
     } catch(e) {
       console.log(e)
@@ -70,7 +70,7 @@ export class ScanerQrPage implements OnInit, OnDestroy{
     }
   }
 
-  actualizarAsistencia(datos : string) {
+  async actualizarAsistencia(datos : string) {
     let datosJSON = JSON.parse(datos);
     const idAsignatura = datosJSON.id_asignatura;
     const idHora = datosJSON.id_hora;
@@ -81,9 +81,8 @@ export class ScanerQrPage implements OnInit, OnDestroy{
     let diaActStr : string | undefined = ''
     diaActStr = this.nombresDias.get(diaSemana);
     const horaActStr = hora + ':' + minutos
-    this.apiService.aumentarAsistencia(idAsignatura, horaActStr, diaActStr, idHora)
-
-
+    this.confirmar = await this.apiService.aumentarAsistencia(idAsignatura, horaActStr, diaActStr, idHora)
+    this.confirmar = this.confirmar.mensaje
   }
 
 
