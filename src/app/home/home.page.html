@@ -1,29 +1,24 @@
 <ion-header id="inicio">
-    <ion-toolbar>
-        <ion-title id="title" class="centered-title">
-            Inicio
-        </ion-title>
+    <ion-toolbar id="tool">
+    <ion-buttons slot="start">
         <ion-menu-button slot="start"></ion-menu-button>
-        <ion-buttons slot="end">
-            <ion-icon size="large" class="ion-margin-end" name="person-circle-outline"></ion-icon>
-        </ion-buttons>
-    </ion-toolbar>
+    </ion-buttons>
+</ion-toolbar>
+<ion-img id="logo" src="assets/icon/logo.png"></ion-img>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-    <p>Se hacen los cambios xd</p>
-    <ion-card *ngIf = "compDatos">
-        <ion-title id="detalleTitle"> ¡Bienvenido de vuelta {{usu.p_nombre}}!</ion-title>
-        <ion-item>
+    <ion-card class="card">
+    <ion-title id="detalleTitle"> ¡Bienvenido de vuelta {{usu.p_nombre}}!</ion-title>
+</ion-card>
+    <ion-card class="card" *ngIf = "compDatos">
+        <ion-item class="item">
+            <div class="label-container">
             <ion-label id="datos">Nombre: {{usu.p_nombre}} {{usu.ap_paterno}} </ion-label>
-        </ion-item>
-        <ion-item>
             <ion-label id="datos">Gmail: {{usu.gmail}} </ion-label>
-        </ion-item>
-        <ion-item>
             <ion-label id="datos">Usuario: {{usu.tipoUsuario}} </ion-label>
+        </div>
         </ion-item>
-
     </ion-card>
 
     <ion-button *ngIf="usu.tipoUsuario==='alumno'" 

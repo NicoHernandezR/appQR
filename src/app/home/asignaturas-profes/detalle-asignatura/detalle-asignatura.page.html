@@ -1,18 +1,9 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-menu-button slot="start"></ion-menu-button>
-    <ion-buttons slot="end">
-      <ion-icon size="large" class="ion-margin-end" name="person-circle-outline"></ion-icon>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
 <ion-header *ngIf="datosCargados === true">
-  <ion-toolbar color="primary">
+  <ion-toolbar id="tool">
     <ion-buttons slot="start">
-      <ion-back-button text="Volver"></ion-back-button>
+      <ion-back-button id="volver" text="Volver"></ion-back-button>
     </ion-buttons >
-    <ion-title size="small" class="centered-title">
+    <ion-title id="title" size="small" class="centered-title">
       {{asignatura.nombre}} {{asignatura.seccion}}
       <br>
       Clases registradas: {{asignatura.clases_hechas}}
@@ -31,21 +22,20 @@
         <ion-label>{{alum.alum_nom}}  </ion-label>
         <ion-label slot="end"> {{alum.porc_asis}}% </ion-label>
     </ion-item>
-  
-    <ion-item class="ion-hide detalles{{alum.rut}}">
+  <ion-card id="card">
+    <ion-item id="item" class="ion-hide detalles{{alum.rut}}">
       <ion-label>
           Rut: 
       </ion-label>
       <ion-label slot="end">{{alum.rut}}</ion-label>
     </ion-item>
-    <ion-item lines="full" class="ion-hide detalles{{alum.rut}}">
+    <ion-item id="item" lines="full" class="ion-hide detalles{{alum.rut}}">
       <ion-label>Asistencias: </ion-label>
       <ion-label slot="end">
           {{alum.cant_asis}}
       </ion-label>
     </ion-item>
-
-  
+  </ion-card>
   </div>
   
 

@@ -1,24 +1,25 @@
 <ion-header [translucent]="true" id="color1">
-    <ion-title id="title">Bienvenido al Login!</ion-title>
+    <ion-img id="logo" src="assets/icon/logo.png"></ion-img>
+    <ion-title id="title">Registro de asistencia</ion-title>
 </ion-header>
 
 <ion-content>
     <ion-card class="centrado-card">
         <ion-card-header>
-            <ion-card-title id="color2">Iniciar Sesion</ion-card-title>
+            <ion-card-title id="titulo">Iniciar Sesión</ion-card-title>
         </ion-card-header>
         <ion-item id="usuario" lines="full">
-            <ion-icon slot="start" name="person"></ion-icon>
-            <ion-label position="floating">Email</ion-label>
-            <ion-input pattern="[A-Za-z0-9]+@[A-Za-z0-9]+\.[a-z]{2,4}" required [(ngModel)]="user.usuario" type="email" placeholder="fr.hernandez@duocuc.cl"></ion-input>
+            <ion-icon position="absolute" slot="start" name="person"></ion-icon>
+            <ion-label class="radio" position="floating">Email</ion-label>
+            <ion-input class="radio" pattern="[A-Za-z0-9]+@[A-Za-z0-9]+\.[a-z]{2,4}" required [(ngModel)]="user.usuario" type="email" placeholder="fr.hernandez@duocuc.cl"></ion-input>
         </ion-item>
         <br>
         <ion-item id="contra" lines="full">
-            <ion-icon slot="start" name="key"></ion-icon>
-            <ion-label position="floating">Contrseña</ion-label>
-            <ion-input required [(ngModel)]="user.password" type="password" placeholder="********"></ion-input>
+            <ion-icon position="absolute" slot="start" name="key"></ion-icon>
+            <ion-label class="radio" position="floating">Contrseña</ion-label>
+            <ion-input class="radio" required [(ngModel)]="user.password" type="password" placeholder="********"></ion-input>
         </ion-item>
         <ion-button id="animated-button" shape="round" [disabled]="!isValidEmail()" expand="full" (click)="aceptar()">Ingresar</ion-button>
-        <ion-button id="animated-button" shape="round" expand="full" (click)="recuperar()">Recuperar contraseña</ion-button>
+        <ion-button id="animated-button2" shape="round" expand="full" (click)="recuperar()">Recuperar contraseña</ion-button>
     </ion-card>
 </ion-content>

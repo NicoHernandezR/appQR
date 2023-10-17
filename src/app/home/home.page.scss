@@ -1,37 +1,58 @@
-#title{
-    font-size: 50px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: center;
-}
-
-
 #inicio{
-display: block;
-color: #dbb020;
-
+    display: inline-flex;
+    flex-direction: row;
+        justify-content: center;
+        align-items: center;
 }
+#logo{
+    width: 400px;
+    margin-right: 120px;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#tool{
+    display: inline-flex;
+    flex-direction: row;
+}
+
 
 #button{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    --ion-color-primary: #dbb020;
+    --ion-color-primary: #012C56;
     --ion-color-primary-contrast: #ffff;
 
 }
+
 #detalleTitle{
-    font-size: 20px;
+    font-size: 25px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: left;
-    color: #dbb020;
+    background-color: #FFC107;
+    color:#ffff
 
 }
-#datos{
+.card{box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    height: 20px;
-    width: 50px;
-    text-align: left;
+    width: 390px;
 
-    
+}
+
+
+.item{
+    display: inline-flex;
+    width: 100%;
+
+}
+.label-container {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+#datos{
+    margin: 12px 0;
+    font-size: 20px;
+    font-family: 'Franklin Medium', 'Arial Narrow', Arial, sans-serif;
+
 }

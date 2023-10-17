@@ -84,6 +84,7 @@ export class ListaAsignaturaPage implements OnInit {
       console.log('remove ion-hide')
     });
     itemTitle.setAttribute('lines', 'none');
+    
   }
 
   ocultarDetalle(id : number) {
