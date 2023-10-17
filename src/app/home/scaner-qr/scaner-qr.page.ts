@@ -11,7 +11,7 @@ export class ScanerQrPage implements OnInit, OnDestroy{
 
   scannedResult: any
   scaneando : string = ''
-  confirmar : string = ''
+  confirmar : any
   nombresDias = new Map<number, string>([
     [0, 'Domingo'],
     [1, 'Lunes'],
@@ -30,7 +30,9 @@ export class ScanerQrPage implements OnInit, OnDestroy{
   async checkPermission() {
     try {
       const status = await BarcodeScanner.checkPermission({force:true});
-      if (status.granted) {
+      console.log("status")
+      console.log(status)
+      if (status.neverAsked || status.granted) {
         return true;
       }
       return false;
@@ -43,7 +45,9 @@ export class ScanerQrPage implements OnInit, OnDestroy{
   async scannearQR() {
     try {
       const permission = await this.checkPermission();
+      console.log("permission")
       if(!permission) {
+        console.log("permission no")
         return;
       }
       await BarcodeScanner.hideBackground();
@@ -56,8 +60,8 @@ export class ScanerQrPage implements OnInit, OnDestroy{
         BarcodeScanner.showBackground()
         document.querySelector('body')?.classList.remove('scanner-active');
         this.scaneando = ''
-        //this.actualizarAsistencia(this.scannedResult)
-        this.confirmar = typeof this.scannedResult
+        this.confirmar = this.actualizarAsistencia(this.scannedResult)
+        this.confirmar = this.confirmar.mensaje
       }
     } catch(e) {
       console.log(e)
