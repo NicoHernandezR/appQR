@@ -1,27 +1,15 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-menu-button slot="start"></ion-menu-button>
-    <ion-buttons slot="end">
-      <ion-icon size="large" class="ion-margin-end" name="person-circle-outline"></ion-icon>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar id="tool">
     <ion-buttons slot="start">
-      <ion-back-button text="Volver"></ion-back-button>
+      <ion-back-button id="volver" text="Volver"></ion-back-button>
+      <ion-title id="title">Lista de Asignaturas</ion-title>
     </ion-buttons >
-    <ion-title size="small" class="centered-title">Lista de Asignaturas</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
 <div *ngFor="let asig of listaAsignatura">
-
-  <div style="border: 5px; border-color: red;">
-
   <ion-item button lines="full" 
       (click)="mostrarDetalles(asig.id_asignatura)" 
       detail="true" detail-icon="caret-forward-outline"
@@ -29,30 +17,30 @@
       <ion-label>{{asig.asig_nom}}  {{asig.seccion}} </ion-label>
       <ion-label slot="end"> {{asig.porc_asis}}% </ion-label>
   </ion-item>
-
-  <ion-item class="ion-hide detalles{{asig.id_asignatura}}">
+<ion-card id="card">
+  <ion-item id="item" class="ion-hide detalles{{asig.id_asignatura}}">
     <ion-label>
         Profesor: 
     </ion-label>
     <ion-label slot="end">{{asig.pro_nom}}</ion-label>
   </ion-item>
 
-  <ion-item class="ion-hide detalles{{asig.id_asignatura}}">
+  <ion-item id="item" class="ion-hide detalles{{asig.id_asignatura}}">
     <ion-label>
       Nº de clases registradas: 
     </ion-label>
     <ion-label slot="end">{{asig.clases_hechas}}</ion-label>
   </ion-item>
 
-  <ion-item lines="full" class="ion-hide detalles{{asig.id_asignatura}}">
+  <ion-item id="item" lines="full" class="ion-hide detalles{{asig.id_asignatura}}">
     <ion-label>
         Asistencia: 
     </ion-label>
     <ion-label slot="end">{{asig.cant_asis}}</ion-label>
   </ion-item>
+</ion-card>
 </div>
 
-</div>
 
 </ion-content>
 

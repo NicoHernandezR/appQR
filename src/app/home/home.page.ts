@@ -23,6 +23,7 @@ export class HomePage implements OnInit{
     private apiService : ApiService, private actRoute: ActivatedRoute) {}
 
    irAsignaturas() {
+    this.router.navigate(['home/lista-asignatura'])
   }
 
   irAsignaturasProfe() {

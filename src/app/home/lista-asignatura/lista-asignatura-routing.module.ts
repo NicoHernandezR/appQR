@@ -8,10 +8,6 @@ const routes: Routes = [
     path: '',
     component: ListaAsignaturaPage
   },
-  {
-    path: 'info-asignatura',
-    loadChildren: () => import('./info-asignatura/info-asignatura.module').then( m => m.InfoAsignaturaPageModule)
-  }
 ];
 
 @NgModule({

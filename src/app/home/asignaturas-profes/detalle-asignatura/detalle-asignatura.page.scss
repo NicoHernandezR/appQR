@@ -1,12 +1,23 @@
-.ion-item-boder{
-    --border-width: 5px;
-    --border-style: dashed;
+#tool{
+    --background: #012C56;
 }
 
-.i-item-dash{
-    border-style: dashed !important;
+#title{
+    color: #fff;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+
 }
 
-ion-item{
-    --border-color: cyan;
+#volver{
+    color: #fff;
+}
+
+#card{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 380px;
+}
+
+#item{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
