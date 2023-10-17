@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Recuperar PassWord</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="Volver"></ion-back-button>
+    </ion-buttons >
+    <ion-title style="font-size: 15px !important;">Recuperar contraseña</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,11 +15,26 @@
     <ion-item id="usuario" lines="full">
         <ion-icon slot="start" name="person"></ion-icon>
         <ion-label position="floating">Email</ion-label>
-        <ion-input pattern="[A-Za-z0-9]+@[A-Za-z0-9]+\.[a-z]{2,4}" required [(ngModel)]="usuario" type="email" placeholder="fr.hernandez@duocuc.cl"></ion-input>
+        <ion-input pattern="[A-Za-z0-9]+@[A-Za-z0-9]+\.[a-z]{2,4}" required [(ngModel)]="gmail" type="email" placeholder="fr.hernandez@duocuc.cl"></ion-input>
     </ion-item>
-    <ion-button id="animated-button" shape="round" expand="full" [disabled]="!isValidEmail()" (click)="recuperar()">Recuperar contraseña</ion-button>
-    <ion-item>
-      <ion-label>Contraseña: {{contra}} </ion-label>
-    </ion-item>
+    <ion-item id="usuario" lines="full">
+      <ion-icon slot="start" name="key"></ion-icon>
+      <ion-label position="floating">Rut</ion-label>
+      <ion-input required [(ngModel)]="rut" inputmode="numeric" pattern="[0-9]*" placeholder="19000000"></ion-input>
+  </ion-item>
+  <ion-label class="ion-text-center ion-padding" style="display: block;">Sin puntos, ni digito verificador.</ion-label>
+  <br>
+  <ion-button id="animated-button" shape="round" 
+  expand="full" [disabled]="!isValido()" (click)="comprobar()">Recuperar contraseña</ion-button>
+
+  <ion-item id="usuario" lines="full" *ngIf="activarRecuperar()">
+    <ion-icon slot="start" name="key"></ion-icon>
+    <ion-label position="floating">Nueva contraseña</ion-label>
+    <ion-input required [(ngModel)]="nuevaPw"></ion-input>
+  </ion-item>
+  <ion-button *ngIf="activarRecuperar()" id="animated-button" shape="round" 
+  expand="full" [disabled]="!isValidCambiar()" (click)="cambiarContra()">Cambiar contraseña</ion-button>
+
+  <ion-label class="ion-text-center" style="display: block;"> {{mensaje}} </ion-label>
 </ion-card>
 </ion-content>

@@ -21,7 +21,10 @@ export class ApiService {
   private apiAumentarAsistencia = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/asistencia/aumentarAsistencia'
   private apiRecuperarProfe = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/profesor/recuperar/'
   private apiRecuperarAlum = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/alumno/recuperar/'
-
+  private apiComprobarRecuperarAlumno = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/alumno/comprobarRecuperar/'
+  private apiComprobarRecuperarProfesor = 'https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/profesor/comprobarRecuperar/'
+  private apiCambiarPwAlumno = "https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/alumno/cambiarPw" 
+  private apiCambiarPwProfesor = "https://g8293fa264833e2-appqrapex.adb.sa-saopaulo-1.oraclecloudapps.com/ords/usu_api/profesor/cambiarPw" 
  
   constructor(private usuService : UsuarioService) {}
 
@@ -317,5 +320,102 @@ export class ApiService {
         console.error('Error:', error);
       }
       }    
+
+
+  async comprobarRecuperarAlumno(gmail : string, rut : string) {
+    try {
+      const respuesta = await fetch(this.apiComprobarRecuperarAlumno + gmail + '/' + rut);
+      console.log('respuesta')
+      if (!respuesta.ok) {
+        throw new Error('Error al obtener los datos');
+      }
+
+      const datos = await respuesta.json();
+      console.log(datos)
+      console.log('datos')
+      return datos;
+    } catch (error) {
+      console.error('Error:', error);
     }
+  }
+
+
+  async comprobarRecuperarProfesor(gmail : string, rut : string) {
+    try {
+      const respuesta = await fetch(this.apiComprobarRecuperarProfesor + gmail + '/' + rut);
+      console.log('respuesta')
+      if (!respuesta.ok) {
+        throw new Error('Error al obtener los datos');
+      }
+
+      const datos = await respuesta.json();
+      console.log(datos)
+      console.log('datos')
+      return datos;
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+
+  async cambiarPwAlumno(gmail : string, rut : string, 
+    newPw : string) {
+    try {
+      const url = this.apiCambiarPwAlumno;
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json', // Especifica el tipo de contenido del cuerpo
+        },
+        body: JSON.stringify({
+          "gmail" : gmail,
+          "rut" : rut,
+          "newPw" : newPw
+        }), // Puedes enviar un objeto vacío si no necesitas enviar datos específicos en el cuerpo
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error al realizar la solicitud');
+      }
+
+      const datos = await response.json();
+      return datos;
+  
+    } catch (error) {
+      console.error('Error:', error);
+      return error
+    }
+    
+  }
+
+  async cambiarPwProfesor(gmail : string, rut : string, 
+    newPw : string) {
+    try {
+      const url = this.apiCambiarPwProfesor;
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json', // Especifica el tipo de contenido del cuerpo
+        },
+        body: JSON.stringify({
+          "gmail" : gmail,
+          "rut" : rut,
+          "newPw" : newPw
+        }), // Puedes enviar un objeto vacío si no necesitas enviar datos específicos en el cuerpo
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error al realizar la solicitud');
+      }
+
+      const datos = await response.json();
+      return datos;
+  
+    } catch (error) {
+      console.error('Error:', error);
+      return error
+    }
+    
+  }  
+}
 
