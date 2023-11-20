@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar class="azul blanco">
     <ion-buttons slot="start">
       <ion-back-button text="Volver"></ion-back-button>
     </ion-buttons >
@@ -7,18 +7,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <ion-card class="centrado-card">
     <ion-card-header>
-        <ion-card-title id="color2">Recuperar</ion-card-title>
+        <ion-card-title id="title">Recuperar</ion-card-title>
     </ion-card-header>
-    <ion-item id="usuario" lines="full">
-        <ion-icon slot="start" name="person"></ion-icon>
+    <ion-item class='input'  lines="full">
+        <ion-icon  slot="start" name="person"></ion-icon>
         <ion-label position="floating">Email</ion-label>
         <ion-input pattern="[A-Za-z0-9]+@[A-Za-z0-9]+\.[a-z]{2,4}" required [(ngModel)]="gmail" type="email" placeholder="fr.hernandez@duocuc.cl"></ion-input>
     </ion-item>
-    <ion-item id="usuario" lines="full">
-      <ion-icon slot="start" name="key"></ion-icon>
+    <ion-item  class='input' lines="full">
+      <ion-icon  slot="start" name="key"></ion-icon>
       <ion-label position="floating">Rut</ion-label>
       <ion-input required [(ngModel)]="rut" inputmode="numeric" pattern="[0-9]*" placeholder="19000000"></ion-input>
   </ion-item>
@@ -27,7 +27,7 @@
   <ion-button id="animated-button" shape="round" 
   expand="full" [disabled]="!isValido()" (click)="comprobar()">Recuperar contraseña</ion-button>
 
-  <ion-item id="usuario" lines="full" *ngIf="activarRecuperar()">
+  <ion-item class='input' id="usuario" lines="full" *ngIf="activarRecuperar()">
     <ion-icon slot="start" name="key"></ion-icon>
     <ion-label position="floating">Nueva contraseña</ion-label>
     <ion-input required [(ngModel)]="nuevaPw"></ion-input>

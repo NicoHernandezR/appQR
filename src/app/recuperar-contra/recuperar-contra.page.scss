@@ -1,0 +1,44 @@
+*{
+    --inner-padding-end: 0px !important;
+}
+
+.centrado-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+    background-color: #ffffff;
+}
+
+#title {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 45px;
+    color: #012C56 !important
+}
+
+.blanco{
+    color: white
+}
+
+.azul{
+    --ion-background-color: #012C56 !important;
+}
+
+#color2{
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-size: 45px;
+    color: #012C56 !important
+}
+
+.card{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 390px;
+
+}
+
+.input{
+    border-bottom: 1px solid #000;
+    height: 60px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
