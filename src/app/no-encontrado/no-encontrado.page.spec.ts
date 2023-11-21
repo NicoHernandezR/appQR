@@ -5,11 +5,11 @@ describe('NoEncontradoPage', () => {
   let component: NoEncontradoPage;
   let fixture: ComponentFixture<NoEncontradoPage>;
 
-  beforeEach(async(() => {
+  beforeEach(async() => {
     fixture = TestBed.createComponent(NoEncontradoPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  }));
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
